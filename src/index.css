@@ -12,6 +12,19 @@ body {
   font-family: "Poppins", Arial, sans-serif;
   min-height: 100vh;
 }
+
+/* Sticky footer layout */
+#root, .app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.main-content {
+  flex: 1 0 auto;
+}
+footer {
+  flex-shrink: 0;
+}
 header {
   background: #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
