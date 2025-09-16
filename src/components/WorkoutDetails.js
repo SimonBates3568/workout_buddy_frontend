@@ -13,10 +13,11 @@ const WorkoutDetails = ({ workout }) => {
   const [reps, setReps] = useState(workout.reps);
   const [notes, setNotes] = useState(workout.notes || '');
   const [error, setError] = useState(null);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const handleDelete = async () => {
     if (!user) return;
-    const response = await fetch('/api/workouts/' + workout._id, {
+    const response = await fetch(backendUrl + '/api/workouts/' + workout._id, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${user.token}`
@@ -45,7 +46,7 @@ const WorkoutDetails = ({ workout }) => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     if (!user) return;
-    const response = await fetch('/api/workouts/' + workout._id, {
+    const response = await fetch(backendUrl + '/api/workouts/' + workout._id, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

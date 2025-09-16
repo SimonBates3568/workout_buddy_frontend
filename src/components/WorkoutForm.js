@@ -12,6 +12,7 @@ const WorkoutForm = () => {
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
   const [notes, setNotes] = useState('')
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,7 +24,7 @@ const WorkoutForm = () => {
 
     const workout = {title, load, reps, notes}
 
-    const response = await fetch('/api/workouts', {
+    const response = await fetch(backendUrl + '/api/workouts', {
       method: 'POST',
       body: JSON.stringify(workout),
       headers: {

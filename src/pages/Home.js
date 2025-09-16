@@ -9,10 +9,11 @@ import WorkoutForm from '../components/WorkoutForm'
 const Home = () => {
   const {workouts, dispatch} = useWorkoutsContext()
   const {user} = useAuthContext()
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch('/api/workouts', {
+      const response = await fetch(backendUrl + '/api/workouts', {
         headers: {'Authorization': `Bearer ${user.token}`},
       })
       const json = await response.json()
